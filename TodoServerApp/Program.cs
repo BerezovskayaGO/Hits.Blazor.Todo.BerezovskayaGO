@@ -6,6 +6,7 @@ using TodoServerApp.Components.Account;
 using TodoServerApp.Data;
 using TodoServerApp.Data.Interfaces;
 using TodoServerApp.Data.Service;
+using TodoServerApp.Data.Services;
 
 namespace TodoServerApp
 {
@@ -42,7 +43,7 @@ namespace TodoServerApp
                 .AddDefaultTokenProviders();
 
             builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSender>();
-            builder.Services.AddScoped<IDataService, MemoryDataService>();
+            builder.Services.AddScoped<IDataService, MSSQLDataService>();
 
             var app = builder.Build();
 
