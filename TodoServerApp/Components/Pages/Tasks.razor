@@ -7,18 +7,7 @@
 
 <h1>Мои задачи</h1>
 
-<table class="table table-bordered">
-
-    <thead>
-        <tr>
-            <th>ИД</th>
-            <th>Заголовок</th>
-            <th>Описание</th>
-            <th>Создано</th>
-            <th>Завершено</th>
-        </tr>
-    </thead>
-    <tbody>
+<div class="container">
         @if(tasks == null)
         {
             <tr>
@@ -27,19 +16,22 @@
         }
         else
         {
-            @foreach (var task in tasks)
-            {
-                <tr>
-                    <td>@task.Id</td>
-                    <td>@task.Title</td>
-                    <td>@task.Description</td>
-                    <td>@task.CreatedDate</td>
-                    <td>@task.FinishDate</td>
-                </tr>
-            }
+            <div class="card-group">
+                @foreach (var task in tasks)
+                {
+                    <div class="card">
+                        <div class="card-header">
+                            @task.Title
+                        </div>
+                        <div class="card-body">
+                            <p>@task.Description</p>
+                            <p>@task.CreatedDate</p>
+                        </div>
+                    </div>
+                }
+            </div>
         }
-    </tbody>
-</table>
+</div>
 @code {
     IEnumerable<TaskItem>? tasks;
 
